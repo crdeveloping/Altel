@@ -158,7 +158,7 @@ private void keyListeners(){
         jPanel1.setBackground(new java.awt.Color(204, 255, 153));
 
         cmbOperadora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        cmbOperadora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recarga Movistar" }));
+        cmbOperadora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recarga Movistar", "Recarga TUYO MOVIL", "Recarga FULLMOVIL" }));
         cmbOperadora.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbOperadoraItemStateChanged(evt);
