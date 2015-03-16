@@ -125,6 +125,7 @@ public class home extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         menuPedir = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -560,6 +561,14 @@ public class home extends javax.swing.JFrame {
         });
         jMenu2.add(menuPedir);
 
+        jMenu3.setText("Cambiar Usuario y Contraseña");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenu3);
+
         jMenu4.setText("Cerrar Sesión");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -658,6 +667,7 @@ public class home extends javax.swing.JFrame {
 /**/
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
+        closeAll();
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_jMenu4MouseClicked
@@ -923,6 +933,44 @@ public class home extends javax.swing.JFrame {
         txtSaldo.setText(Static.getSaldo());
     }//GEN-LAST:event_formMouseMoved
 
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here: // TODO add your handling code here:
+        int dialogResult=0;
+        dialogResult = JOptionPane.showConfirmDialog (null, "La contraseña y usuario solo se deben cambiar bajo ordenes del proveedor ¿Desea continuar?","Atención",JOptionPane.YES_NO_OPTION);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            String name="";
+                Boolean pass=false;
+            while(!pass){
+                        //if(!pass)JOptionPane.showMessageDialog(null,"Contraseña incorrecta", "Error", JOptionPane.WARNING_MESSAGE );
+                        //name = JOptionPane.showInputDialog(null, "Digite la contraseña para realizar la venta");
+                        JPanel panel = new JPanel();
+                        JLabel label = new JLabel("Digite la contraseña:");
+                        JPasswordField psw = new JPasswordField(10);
+                        panel.add(label);
+                        panel.add(psw);
+                        String[] options = new String[]{"Aceptar", "Cancelar"};
+                        int option = JOptionPane.showOptionDialog(null, panel, "Digite la contraseña",
+                        JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                        null, options, options[1]);
+                        if(option == 0) // pressing OK button
+                        {
+                            char[] password = psw.getPassword();
+                            name=new String(password);
+                        }else{
+                            pass=true;
+                        }
+                        if(name.equals(Static.getPassword()))pass=true;
+                    }  
+            if(pass && name.equals(Static.getPassword())){
+            closeAll();
+            dispose();
+            ventanaPass.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_jMenu3MouseClicked
+                               
+                                    
+
     /**
      * @param args the command line arguments
      */
@@ -970,6 +1018,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
@@ -1033,4 +1082,13 @@ public class home extends javax.swing.JFrame {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void closeAll() {
+        ventanaPass.setVisible(false);
+        recargas.setVisible(false);
+        pines.setVisible(false);
+        servP.setVisible(false);
+        caja.setVisible(false);
+        exportar.setVisible(false);
+}
 }
