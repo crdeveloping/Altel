@@ -372,6 +372,7 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                     this.setVisible(false);
                     new ventanaReporte().setVisible(true);
                 }else {
+                this.setVisible(false);
                     JOptionPane.showMessageDialog(null, resp+", se ha cancelado la transacción");
                 }
             }else{
@@ -500,7 +501,7 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
         String name="";
         Boolean pass=false;
         if(Boolean.parseBoolean(new auth().leerArchivo("Sesion\\archivoPidePassword.txt"))||Boolean.parseBoolean(new auth().leerArchivo("Sesion/archivoPidePassword.txt"))){
-            this.hide();
+            this.setVisible(false);
             while(!pass){
                 //if(!pass)JOptionPane.showMessageDialog(null,"Contraseña incorrecta", "Error", JOptionPane.WARNING_MESSAGE );
                 //name = JOptionPane.showInputDialog(null, "Digite la contraseña para realizar la venta");

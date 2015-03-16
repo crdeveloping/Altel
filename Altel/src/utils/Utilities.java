@@ -228,6 +228,7 @@ public class Utilities {
 
         } catch (UnknownHostException e) {
             System.out.println(e.getMessage());
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
