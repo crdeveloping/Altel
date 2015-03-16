@@ -327,9 +327,9 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
             String celular = num;
             switch (selected) {
                 case "Recarga Movistar":
-                    operador = "200";
-                    producto = "11";
-                    proceso = "680000";
+                    operador = "19";
+                    producto = "15";
+                    proceso = "700000";
                     break;
                     
                 case "Recarga TUYO MOVIL":
