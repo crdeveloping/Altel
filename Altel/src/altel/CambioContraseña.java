@@ -418,8 +418,8 @@ public class CambioContraseña extends javax.swing.JFrame {
        if(firstTime){
             System.exit(0);
         }else{
-            this.setVisible(false);
             new home().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -432,8 +432,8 @@ public class CambioContraseña extends javax.swing.JFrame {
         if(firstTime){
             System.exit(0);
         }else{
-            this.setVisible(false);
             new home().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_formWindowClosing
 
