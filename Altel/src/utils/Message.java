@@ -226,7 +226,7 @@ public class Message {
             datos += ","+zonaSoloCabletica;
         }
         
-        String extraInfo = "PC"+"|"+InetAddress.getLocalHost()+"|"+ni.getHardwareAddress()+"|NA|Hardware id client"+System.getProperty("os.name").toLowerCase()+"|NA";
+        String extraInfo = "PC"+"|"+InetAddress.getLocalHost().getHostAddress()+"|"+ni.getHardwareAddress()+"|NA|Hardware id client|"+System.getProperty("os.name").toLowerCase()+"|NA";
         map = new HashMap<String, String>();
         map.put("0","0200");
         map.put("3","000006");
