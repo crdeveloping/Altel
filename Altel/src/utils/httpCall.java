@@ -40,7 +40,7 @@ public class httpCall {
     public JSONObject call(String type) throws IOException{
         String content = "";
         try {
-            URL data = new URL("http://66.165.180.245:8029/"+type+".json");
+            URL data = new URL("http://66.165.180.245:8028/"+type+".json");
             
             URLConnection dataConnection = data.openConnection();
 
