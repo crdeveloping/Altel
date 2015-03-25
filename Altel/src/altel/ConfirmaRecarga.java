@@ -38,17 +38,20 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
     /**
      * Creates new form ConfirmaRecarga
      */
-    String operador,mont,num,tipo,consecutivoRecibo,zonaSoloCabletica;
+    String operador,mont,num,tipo,consecutivoRecibo,zonaSoloCabletica,adicional;
     public ConfirmaRecarga(String mont,String num,String operador,String tipo,String consecutivoRecibo,String zonaSoloCabletica,String adicional) {
         initComponents();
         setLocationRelativeTo(null);
+        this.consecutivoRecibo = consecutivoRecibo;
+        this.zonaSoloCabletica = zonaSoloCabletica;
+        this.adicional = adicional;
         ImageIcon img = new ImageIcon(getClass().getResource("/altel/resurces/Movistar_Logo.png"));
         setIconImage(img.getImage());
         this.operador=operador;
-        this.mont=mont;
+        this.mont = mont.substring(0, mont.length() - 2);
         this.num=num;
         lblOperador.setText(operador);
-        lblMonto.setText(mont);
+        lblMonto.setText(this.mont);
         lblNum.setText(num);
         this.tipo=tipo;
         switch (tipo) {
@@ -614,10 +617,10 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
 
     private void servicios() {
         try {
-            if(Integer.parseInt(txtPagar.getText())>=Integer.parseInt(mont)){
+            if(Integer.parseInt(txtPagar.getText())>=(Integer.parseInt(this.mont))){
                 Utilities util = new Utilities();
                 Message msg = new Message();
-                msg.pagarServiciosPublicos(mont,consecutivoRecibo, zonaSoloCabletica);
+                msg.pagarServiciosPublicos(txtPagar.getText(),consecutivoRecibo, zonaSoloCabletica);
                 Map<String, String> response = util.SendToServer(msg.buildString());
                 msg.setMap(response);
                 String resp = msg.getMsgResponse();
