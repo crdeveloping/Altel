@@ -733,8 +733,8 @@ public class home extends javax.swing.JFrame {
 
     private void lblKolbiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKolbiMouseClicked
         // TODO add your handling code here:
-        recargas.cambioOperadora("Recarga Movistar",lblKolbi.getIcon());
-        recargas.setVisible(true);
+        servP.cambioOperadora("Planes Movistar");
+        servP.setVisible(true);
     }//GEN-LAST:event_lblKolbiMouseClicked
 
     private void btnServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiciosMouseClicked
