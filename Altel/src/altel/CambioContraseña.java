@@ -5,6 +5,7 @@
  */
 package altel;
 
+import com.sun.javafx.Utils;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -372,6 +373,8 @@ public class CambioContraseña extends javax.swing.JFrame {
                             file.escribeFichero(txtUser.getText(),"Sesion/archivoUser.txt");
                             file.escribeFichero(txtId.getText(),"Sesion/archivoId.txt");
                             file.escribeFichero(txtNew.getText(),"Sesion/archivoPassword.txt");
+//                            long serialNumber = Utils.getRandomLong(1, 999999999999999L);
+//                            String serial_default = padleft(String.valueOf(serialNumber), 15, '0');
                             this.setVisible(false);
                             JOptionPane.showMessageDialog(null,"Ha ingresado los datos correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE );
                             
@@ -471,6 +474,22 @@ public class CambioContraseña extends javax.swing.JFrame {
                 new CambioContraseña().setVisible(true);
             }
         });
+    }
+    
+    public static String padleft(String s, int len, char c){
+        s = s.trim();
+        
+        if (s.length() <= len){
+            StringBuffer d = new StringBuffer(len);
+            int fill = len - s.length();
+            while (fill--> 0)
+                d.append(c);
+            
+            d.append(s);
+            return d.toString();
+        } else
+            return s;
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
