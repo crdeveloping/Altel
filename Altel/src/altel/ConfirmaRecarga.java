@@ -39,6 +39,8 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
      * Creates new form ConfirmaRecarga
      */
     String operador,mont,num,tipo,consecutivoRecibo,zonaSoloCabletica,adicional;
+    
+        boolean opened=false;
     public ConfirmaRecarga(String mont,String num,String operador,String tipo,String consecutivoRecibo,String zonaSoloCabletica,String adicional) {
         initComponents();
         setLocationRelativeTo(null);
@@ -48,7 +50,7 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon(getClass().getResource("/altel/resurces/Movistar_Logo.png"));
         setIconImage(img.getImage());
         this.operador=operador;
-        this.mont = (Integer.parseInt(mont)/100)+"";
+        this.mont = mont;
         this.num=num;
         lblOperador.setText(operador);
         lblMonto.setText(this.mont);
@@ -81,6 +83,8 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                     jLabel4.setText("Identificador:");
                     jLabel4.setVisible(true);
                     lblNum.setVisible(true);
+                    this.mont = (Integer.parseInt(mont)/100)+"";
+        lblMonto.setText(this.mont);
                 break;
             }
         keyListeners();
@@ -377,15 +381,18 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                 }else {
                 this.setVisible(false);
                     JOptionPane.showMessageDialog(null, resp+", se ha cancelado la transacción");
+                    opened=false;
                 }
             }else{
                 this.setVisible(false);
                 consultaErronea(response.get("39"));
+                    opened=false;
             }
         } catch (Exception ex) {
             Logger.getLogger(ConfirmaRecarga.class.getName()).log(Level.SEVERE, null, ex);
             this.setVisible(false);
             JOptionPane.showMessageDialog(null,ex.toString(), "Error", JOptionPane.ERROR_MESSAGE );
+                    opened=false;
             
         }
            
@@ -486,11 +493,13 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                                 }else {
                                     this.setVisible(false);
                                     JOptionPane.showMessageDialog(null, resp+", se ha cancelado la transaccion");
+                    opened=false;
                                 }
                             
                             }else{
                                     this.setVisible(false);
                                     consultaErronea(response.get("39"));
+                    opened=false;
                             }
         } catch (Exception ex) {
             Logger.getLogger(Recargas.class.getName()).log(Level.SEVERE, null, ex);
@@ -501,6 +510,8 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(!opened){
+                opened=true;
         String name="";
         Boolean pass=false;
         if(Boolean.parseBoolean(new auth().leerArchivo("Sesion\\archivoPidePassword.txt"))||Boolean.parseBoolean(new auth().leerArchivo("Sesion/archivoPidePassword.txt"))){
@@ -524,6 +535,7 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null,"Compra Cancelada", "Error", JOptionPane.WARNING_MESSAGE );
                     pass=true;
+                    opened=false;
                 }
                 if(name.equals(Static.getPassword()))pass=true;
             }   
@@ -546,6 +558,7 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                     servicios();
                 break;
             }
+        }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -633,20 +646,26 @@ public class ConfirmaRecarga extends javax.swing.JFrame {
                 }else {
                     this.setVisible(false);
                     JOptionPane.showMessageDialog(null, resp+", se ha cancelado la transaccion");
+                    opened=false;
                 }
               
               }else{
                this.setVisible(false);
                consultaErronea(response.get("39"));
+                    opened=false;
               }
             }
             else{
+                    this.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Por favor inserte un monto mayor o igual al cobro");
+                    opened=false;
+                    this.setVisible(true);
             }
         } catch (Exception ex) {
             Logger.getLogger(ConfirmaRecarga.class.getName()).log(Level.SEVERE, null, ex);
             this.setVisible(false);
             JOptionPane.showMessageDialog(null,"Error de conexión, transacción cancelada. \n Revise su conexión a internet o comuníquese con el proveedor", "Error", JOptionPane.ERROR_MESSAGE );
+                    opened=false;
             
         }
     }
