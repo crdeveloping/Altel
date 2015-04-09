@@ -207,8 +207,11 @@ private void keyListeners(){
             }
             if(sigue){
                 TextPrinter print=new TextPrinter();
-                print.setLineas(areaReporte.getText().split("\n"));
+            try {
                 print.startPrinter(selected,cual,caja);
+            } catch (IOException ex) {
+                Logger.getLogger(ventanaReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 this.setVisible(false);
                  int dialogResult=0;
             dialogResult = JOptionPane.showConfirmDialog (null, "Confirme que se realizó la impresión. ¿Desea cerrar la ventana?","Atención",JOptionPane.YES_NO_OPTION);
