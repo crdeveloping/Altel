@@ -241,9 +241,11 @@ public class TextPrinter implements Printable {
         br.close();
         } catch (IOException ex) {
             Logger.getLogger(TextPrinter.class.getName()).log(Level.SEVERE, null, ex);
+        return "";
         }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TextPrinter.class.getName()).log(Level.SEVERE, null, ex);
+        return "";
         }
         return reporte;
     }
