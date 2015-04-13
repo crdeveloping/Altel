@@ -38,6 +38,7 @@ public class ventanaReporte extends javax.swing.JFrame {
         caja=false;
         cual=0;
         setLocationRelativeTo(null);
+        jButton4.requestFocusInWindow();
         keyListeners();
     }
 
