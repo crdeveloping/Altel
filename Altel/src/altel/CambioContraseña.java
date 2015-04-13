@@ -6,6 +6,7 @@
 package altel;
 
 import com.sun.javafx.Utils;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +27,8 @@ import utils.auth;
 public class CambioContraseña extends javax.swing.JFrame {
     auth file;
     boolean firstTime;
+    
+         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
     /**
      * Creates new form CambioContraseña
      */
@@ -249,7 +252,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         txtAgain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
-                   jButton1MouseClicked(null);
+                   manager.focusNextComponent();
                 }             
             }
          });
@@ -263,21 +266,21 @@ public class CambioContraseña extends javax.swing.JFrame {
         txtNew.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                   jButton1MouseClicked(null);
+                   manager.focusNextComponent();
                 }             
             }
          });
         txtOld.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
-                   jButton1MouseClicked(null);
+                   manager.focusNextComponent();
                 }             
             }
          });
         txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
-                   jButton1MouseClicked(null);
+                   manager.focusNextComponent();
                 }             
             }
          });
@@ -304,7 +307,6 @@ public class CambioContraseña extends javax.swing.JFrame {
        /* }else{
             changePass();
         }*/
-        
     }//GEN-LAST:event_jButton1MouseClicked
     
     private void changePass(){
@@ -393,7 +395,6 @@ public class CambioContraseña extends javax.swing.JFrame {
                             
                             this.setVisible(false);
                             JOptionPane.showMessageDialog(null,resp, "Error", JOptionPane.ERROR_MESSAGE );
-                            
                             this.setVisible(true);
                         }
                     } catch (Exception ex) {

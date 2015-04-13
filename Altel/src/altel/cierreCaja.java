@@ -5,6 +5,7 @@
  */
 package altel;
 
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,6 +37,7 @@ public class cierreCaja extends javax.swing.JFrame {
      * Creates new form cierreCaja
      */
     String fechaSelected;
+    KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
     public cierreCaja() {
         initComponents();
         ImageIcon img = new ImageIcon(getClass().getResource("/altel/resurces/Movistar_Logo.png"));
@@ -88,6 +90,7 @@ public class cierreCaja extends javax.swing.JFrame {
         txtRecargas.setEditable(false);
         txtRecargas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtRecargas.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtRecargas.setFocusable(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Serv. Públicos:");
@@ -167,6 +170,7 @@ public class cierreCaja extends javax.swing.JFrame {
         txtFinal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtFinal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtFinal.setText("0");
+        txtFinal.setFocusable(false);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Saldo Final:");
@@ -192,6 +196,7 @@ public class cierreCaja extends javax.swing.JFrame {
         txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtTotal.setFocusable(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 204, 0));
@@ -200,6 +205,7 @@ public class cierreCaja extends javax.swing.JFrame {
         txtServicios.setEditable(false);
         txtServicios.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txtServicios.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtServicios.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -292,6 +298,22 @@ public class cierreCaja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 private void keyListeners(){
+    
+        cmbDias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent e) {
+               if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
+                   manager.focusNextComponent();
+                }             
+            }
+         });
+        cmbMeses.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent e) {
+               if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
+                   jButton3MouseClicked(null);
+                   manager.focusNextComponent(jButton3);
+                }             
+            }
+         });
         jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
@@ -309,6 +331,7 @@ private void keyListeners(){
         jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                if(e.getKeyCode() == KeyEvent.VK_ENTER){ 
+                   manager.focusNextComponent();
                    jButton3MouseClicked(null);
                 }             
             }
