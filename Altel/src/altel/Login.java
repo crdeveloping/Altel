@@ -74,7 +74,9 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No hay usuario registrado, debe ingresar los datos del nuevo Usuario", "Atención!", JOptionPane.INFORMATION_MESSAGE );
             change.setVisible(true);
         }else{
-            txtUser.setText(file.leerArchivo("Sesion\\archivoUser.txt"));
+            
+            if(Static.isWindows())txtUser.setText(file.leerArchivo("Sesion\\archivoUser.txt"));
+            else txtUser.setText(file.leerArchivo("Sesion/archivoUser.txt"));
                    txtPass.requestFocusInWindow();
                    
         }
