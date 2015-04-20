@@ -150,8 +150,6 @@ public class TextPrinter implements Printable {
             i = count;
         }
     }
-        
-                
         } catch (IOException ex) {
             Logger.getLogger(TextPrinter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -191,7 +189,6 @@ public class TextPrinter implements Printable {
        if(Static.isWindows()) Bitacora = new File(System.getProperty("user.home")+"\\Documents\\Altel\\Files\\Bitacora");
        else Bitacora = new File(System.getProperty("user.home")+"/Documents/Altel/Files/Bitacora");
         String[] lista=Bitacora.list();
-        
         if(lista.length>=3){
         try {
             if(Static.isWindows()){

@@ -114,7 +114,7 @@ public class Utilities {
         HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
       }
     
-    public Map<String, String> SendToServerBad(String msg) throws Exception{
+    public Map<String, String> SendToServerSSL(String msg) throws Exception{
         //disableCertificateValidation();
         Map<String, String> result = new HashMap<>();
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));

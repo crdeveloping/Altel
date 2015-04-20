@@ -971,8 +971,6 @@ public class home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu3MouseClicked
                                
-                                    
-
     /**
      * @param args the command line arguments
      */

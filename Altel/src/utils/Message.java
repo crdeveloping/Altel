@@ -200,13 +200,29 @@ public class Message {
     }  
     
     public void consultaServiciosPublicos(String empresa,String numeroReferencia,String zonaSoloCabletica,String tipoSoloCabletica) throws UnknownHostException, SocketException{
-        NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+        //NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+        String mac = "";
+        String ip = "";
+        NetworkInterface ni = null;
+        try{
+            ip = InetAddress.getLocalHost().getHostAddress();
+        }
+        catch(Exception e){
+            ip = "127.0.0.1";
+        }
+        try{
+            ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            mac = ni.getHardwareAddress().toString();
+        }
+        catch(Exception e){
+            mac = "02-50-F2-CE-82-01";
+        }
         String datos = usuario + "," + dispersion(usuario,clave) + ","+empresa+","+numeroReferencia;
         if(empresa.equals("021003")){
             datos += ","+zonaSoloCabletica+","+tipoSoloCabletica;
         }
         datos += ",NA,NA,NA,NA";
-        String extraInfo = "PC"+"|"+InetAddress.getLocalHost()+"|"+ni.getHardwareAddress()+"|NA||"+System.getProperty("os.name").toLowerCase()+"|NA";
+        String extraInfo = "PC"+"|"+ip+"|"+mac+"|NA||"+System.getProperty("os.name").toLowerCase()+"|NA";
         map = new HashMap<String, String>();
         map.put("0","0100");
         map.put("3","000004");
@@ -220,13 +236,29 @@ public class Message {
     }  
     
     public void pagarServiciosPublicos(String monto,String consecutivoRecibo,String zonaSoloCabletica) throws UnknownHostException, SocketException{
-        NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+        //NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+        String mac = "";
+        String ip = "";
+        NetworkInterface ni = null;
+        try{
+            ip = InetAddress.getLocalHost().getHostAddress();
+        }
+        catch(Exception e){
+            ip = "127.0.0.1";
+        }
+        try{
+            ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            mac = ni.getHardwareAddress().toString();
+        }
+        catch(Exception e){
+            mac = "02-50-F2-CE-82-01";
+        }
         String datos = usuario + "," + dispersion(usuario,clave) + ","+consecutivoRecibo+","+monto+"00";
         if(!zonaSoloCabletica.equals("")){
             datos += ","+zonaSoloCabletica;
         }
         
-        String extraInfo = "PC"+"|"+InetAddress.getLocalHost().getHostAddress()+"|"+ni.getHardwareAddress()+"|NA|Hardware id client|"+System.getProperty("os.name").toLowerCase()+"|NA";
+        String extraInfo = "PC"+"|"+ip+"|"+mac+"|NA|Hardware id client|"+System.getProperty("os.name").toLowerCase()+"|NA";
         map = new HashMap<String, String>();
         map.put("0","0200");
         map.put("3","000006");
@@ -408,6 +440,7 @@ public class Message {
         codigosMap.put("92","Reverso: Estado de la transacción original REVERSADA.");
         codigosMap.put("93","Reverso: Estado de la transacción original ANULADA.");
         codigosMap.put("70","No existen PINES en el inventario");
+        codigosMap.put("71","Número de referencia inválido");
         codigosMap.put("77","Error interno de plataforma. Falta secuenciador de operador.");
     }
 
@@ -460,8 +493,4 @@ public class Message {
             Logger.getLogger(Message.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-//    public String getHardwareId(){
-//        
-//    }
 }
