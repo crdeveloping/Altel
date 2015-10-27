@@ -45,7 +45,7 @@ public class Utilities {
     }
     
     public Utilities() throws Exception{
-        socket = new Socket(host, port);
+        //socket = new Socket(host, port);
     }
     
     public Map<String, String> SendToServerNoSSL(String msg) throws Exception{
