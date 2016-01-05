@@ -393,7 +393,7 @@ private void keyListeners(){
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
-
+ 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         this.setVisible(false);
@@ -401,7 +401,8 @@ private void keyListeners(){
 
     private void cmbMesesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMesesItemStateChanged
         // TODO add your handling code here:
-        if(cmbMeses.getSelectedIndex()==0&&cmbMeses.getSelectedItem().equals("12"))cmbAnos.setSelectedIndex(0);
+        if(cmbMeses.getSelectedIndex()==0&&cmbMeses.getSelectedItem().equals("12")&&cmbAnos.getModel().getSize()>0)cmbAnos.setSelectedIndex(0);
+        if(cmbMeses.getSelectedIndex()==1&&cmbMeses.getSelectedItem().equals("01")&&cmbAnos.getModel().getSize()>0)cmbAnos.setSelectedIndex(1);
             jButton1.setVisible(false);
             limpiar();
     }//GEN-LAST:event_cmbMesesItemStateChanged

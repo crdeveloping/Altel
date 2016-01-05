@@ -313,7 +313,7 @@ public class home extends javax.swing.JFrame {
 
         areaNoti.setEditable(false);
         areaNoti.setColumns(20);
-        areaNoti.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        areaNoti.setFont(areaNoti.getFont().deriveFont(areaNoti.getFont().getSize()+1f));
         areaNoti.setLineWrap(true);
         areaNoti.setRows(5);
         jScrollPane2.setViewportView(areaNoti);
@@ -416,7 +416,7 @@ public class home extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Bitacora", jPanel3);
@@ -527,7 +527,6 @@ public class home extends javax.swing.JFrame {
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Información");
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jMenu2.setText("Opciones");
